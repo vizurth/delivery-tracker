@@ -9,3 +9,15 @@ postgres:
   username: "root"
   password: "1234"
   database: "postgres"
+
+kafka:
+  host: "localhost"
+  port: 9092
+  brokers:
+    - 0.0.0.0:9092
+
+
+order:
+  port: 8082
+  migration-path: "file://migrations/order"
+  secret-key: "VxCDGAeugvEa6jvBiFYcOboddRGKydns"

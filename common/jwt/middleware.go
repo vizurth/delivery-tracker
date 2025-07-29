@@ -1,7 +1,6 @@
-package middleware
+package jwt
 
 import (
-	"delivery-tracker/common/jwt"
 	"github.com/gin-gonic/gin"
 	"net/http"
 )
@@ -25,7 +24,7 @@ func AuthMiddlewareAdmin(secret string) gin.HandlerFunc {
 			c.AbortWithStatusJSON(http.StatusUnauthorized, gin.H{"error": "Authorization header missing"})
 			return
 		}
-		claims, err := jwt.ParseToken(tokenString, []byte(secret))
+		claims, err := ParseToken(tokenString, []byte(secret))
 
 		if err != nil {
 			c.AbortWithStatusJSON(http.StatusUnauthorized, gin.H{"error": err.Error()})
@@ -49,7 +48,7 @@ func AuthMiddlewareСourier(secret string) gin.HandlerFunc {
 			c.AbortWithStatusJSON(http.StatusUnauthorized, gin.H{"error": "Authorization header missing"})
 			return
 		}
-		claims, err := jwt.ParseToken(tokenString, []byte(secret))
+		claims, err := ParseToken(tokenString, []byte(secret))
 
 		if err != nil {
 			c.AbortWithStatusJSON(http.StatusUnauthorized, gin.H{"error": err.Error()})
